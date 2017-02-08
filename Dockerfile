@@ -1,6 +1,9 @@
 FROM ubuntu:16.04
 
-# LABEL labelz??
+LABEL version "0.1"
+LABEL description "Play RuneScape in a docker container!"
+LABEL homepage "https://github.com/Densaugeo/runescape-docker"
+LABEL repository "https://github.com/Densaugeo/runescape-docker.git"
 
 # apt-transport-https - RS repo uses HTTPS
 # libcurl3 - unlisted dependency for RS
