@@ -6,6 +6,25 @@ Play RuneScape in a docker container!
 
 Install docker (https://docs.docker.com/). It is available in most major distro's repositories.
 
+Start docker and check which storage driver it is using:
+
+~~~
+sudo systemctl start docker
+sudo docker info | grep Storage
+~~~
+
+If it's using devicemapper storage, change to overlayfs. The devicemapper driver often doesn't release unused space properly, and can quickly expand to fill the drive it's on. On Fedora, overlayfs can be turned on by editing the right config files:
+
+~~~
+sudo vi /etc/sysconfig/docker
+# Add --selinux-enabled=false to the OPTIONS line
+
+sudo vi /etc/sysconfig/docker-storage
+# Add -s overlay to the DOCKER_STORAGE_OPTIONS line
+
+sudo systemctl restart docker
+~~~
+
 Then clone this repo and run the build script:
 
 ~~~
