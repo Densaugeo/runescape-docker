@@ -13,7 +13,7 @@ RS_UID=$(id -u $RS_USER)
 
 xhost + # allow connections to X server
 
-docker run --privileged \
+docker run --privileged --rm \
     -e "DISPLAY=unix:0.0" \
     -v "/tmp/.X11-unix:/tmp/.X11-unix:rw" \
     -v "/etc/machine-id:/etc/machine-id" \
